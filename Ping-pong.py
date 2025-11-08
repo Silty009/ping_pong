@@ -39,8 +39,8 @@ class Player(GameSprite):
 
 
 
-hero = Player(80, 80, 'cat1.png', 80, 80, 2)
-hero2 = Player(80, 80, 'cat2.png', 80, 80, 2)
+hero = Player(80, 80, 'cat1.png', 620, 250, 4)
+hero2 = Player(80, 80, 'cat2.png', 0, 250, 4)
 
 
 
@@ -79,4 +79,22 @@ while game:
     if finish != True:
     
         window.blit(background, (0, 0))
+        hero.reset()
+        hero2.reset()
+        hero.update2()
+        hero2.update1()
 
+
+    
+    
+
+    
+    
+    
+    
+       
+
+    
+    
+    display.update()
+    clock.tick(60)

@@ -1,12 +1,10 @@
-#Создай собственный Шутер!
-
 from pygame import *
 from random import randint
 from time import time as tm
 
 window = display.set_mode((700, 500))
 display.set_caption('Ping-pong')
-background = transform.scale(image.load('Cat_window.jpg'), (700, 500))
+background = transform.scale(image.load('cat_window.png'), (700, 500))
 
 class GameSprite(sprite.Sprite):
     def __init__(self, w, h, player_image, player_x, player_y, player_speed):
@@ -41,8 +39,8 @@ class Player(GameSprite):
 
 
 
-hero = Player(80, 80, 'Cat (1) (1).png', 80, 80, 2)
-hero2 = Player(80, 80, 'Cat2 (1) (1).png', 80, 80, 2)
+hero = Player(80, 80, 'cat1.png', 80, 80, 2)
+hero2 = Player(80, 80, 'cat2.png', 80, 80, 2)
 
 
 
@@ -70,24 +68,15 @@ clock = time.Clock() #создаем игровой таймер
 
 
 
-
-
-
-
 finish = False
 
 while game:
-    pass 
-    
+    for e in event.get():#для каждого события в списке событий совершаемый пользователем
 
-    
-    
-    
-    
-       
+        if e.type == QUIT:#если тип события равен нажатому крестику (выходу из игры)
 
+            game = False
+    if finish != True:
     
-    
-    display.update()
-    clock.tick(60)
+        window.blit(background, (0, 0))
 

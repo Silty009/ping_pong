@@ -41,7 +41,7 @@ class Player(GameSprite):
 
 hero = Player(80, 80, 'cat1.png', 620, 250, 4)
 hero2 = Player(80, 80, 'cat2.png', 0, 250, 4)
-
+meat = GameSprite(50, 50, 'meat.png', 300, 200, 0)
 
 
 # mixer.init()
@@ -83,6 +83,8 @@ while game:
         hero2.reset()
         hero.update2()
         hero2.update1()
+        meat.reset()
+
 
 
     

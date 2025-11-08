@@ -78,6 +78,7 @@ while game:
 
             game = False
     if finish != True:
+
     
         window.blit(background, (0, 0))
         hero.reset()
@@ -87,6 +88,10 @@ while game:
         meat.reset()
         meat.rect.x += speed_x
         meat.rect.y += speed_y
+        if meat.rect.y > 500-50 or meat.rect.y < 0:
+            speed_y = speed_y * -1
+        if sprite.collide_rect(hero, meat) or sprite.collide_rect(hero2, meat):
+            speed_x *= -1
 
 
 
@@ -103,3 +108,4 @@ while game:
     
     display.update()
     clock.tick(60)
+    

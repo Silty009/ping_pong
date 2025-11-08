@@ -66,7 +66,8 @@ rel = font2.render('Ждите, перезарядка!', True, (255, 0, 0))
 game = True
 clock = time.Clock() #создаем игровой таймер
 
-
+speed_x = 3
+speed_y = 3
 
 finish = False
 
@@ -84,6 +85,8 @@ while game:
         hero.update2()
         hero2.update1()
         meat.reset()
+        meat.rect.x += speed_x
+        meat.rect.y += speed_y
 
 
 

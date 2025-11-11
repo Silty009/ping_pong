@@ -4,7 +4,7 @@ from time import time as tm
 
 window = display.set_mode((700, 500))
 display.set_caption('Ping-pong')
-background = transform.scale(image.load('cat_window.png'), (700, 500))
+background = transform.scale(image.load('cat_window.jpg'), (700, 500))
 
 class GameSprite(sprite.Sprite):
     def __init__(self, w, h, player_image, player_x, player_y, player_speed):
@@ -39,9 +39,9 @@ class Player(GameSprite):
 
 
 
-hero = Player(80, 80, 'cat1.png', 620, 250, 4)
-hero2 = Player(80, 80, 'cat2.png', 0, 250, 4)
-meat = GameSprite(50, 50, 'meat.png', 300, 200, 0)
+hero = Player(80, 80, 'Cat (1) (1).png', 620, 250, 4)
+hero2 = Player(80, 80, 'cat2 (1) (1).png', 0, 250, 4)
+meat = GameSprite(50, 50, 'mouse (1) (1).png', 300, 200, 0)
 
 
 # mixer.init()
@@ -54,14 +54,18 @@ meat = GameSprite(50, 50, 'meat.png', 300, 200, 0)
 
 font.init()
 font1 = font.SysFont('Arial', 70)
-win = font1.render('YOU WIN!', True, (225, 215, 0))
 
 
-lose = font1.render('YOU LOSE!', True, (225, 215, 0))
+
+lose_left = font1.render('player left lose!', True, (225, 215, 0))
+
+
+
+lose_right= font1.render('player right lose!', True, (225, 215, 0))
 
 font2 = font.SysFont('Arial', 25) #обязательно заменить класс font на SysFontfont2 = font.SysFont('Arial', 25) 
 
-rel = font2.render('Ждите, перезарядка!', True, (255, 0, 0))
+
 
 game = True
 clock = time.Clock() #создаем игровой таймер
@@ -73,6 +77,7 @@ finish = False
 
 while game:
     for e in event.get():#для каждого события в списке событий совершаемый пользователем
+
 
         if e.type == QUIT:#если тип события равен нажатому крестику (выходу из игры)
 
@@ -92,6 +97,13 @@ while game:
             speed_y = speed_y * -1
         if sprite.collide_rect(hero, meat) or sprite.collide_rect(hero2, meat):
             speed_x *= -1
+        if meat.rect.x > 650:
+            window.blit(lose_right,  (150, 200))
+            finish = True
+        if meat.rect.x == 0:
+            window.blit(lose_left, (150, 200))
+            finish = True
+
 
 
 
@@ -108,4 +120,3 @@ while game:
     
     display.update()
     clock.tick(60)
-    
